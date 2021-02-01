@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- form start -->
+    <section>
+      <form onsubmit="return myfun()">
+        <div class="form_containor">
+          <div class="centerdiv">
+            <p>please join</p>
+            <h2>create account</h2>
+            <div class="namebox">
+              <div class="div1 container">
+                <input
+                  type="text"
+                  name="first"
+                  class="myinput"
+                  id="first"
+                  onblur="myfun(1)"
+                  onclick="mytransform('first','label1')"
+                />
+                <label class="label1">first name</label>
+                <div class="warnnig" id="firstname"></div>
+              </div>
+              <div class="div2 container">
+                <input
+                  type="text"
+                  class="myinput"
+                  name="latname"
+                  id="last"
+                  onblur="myfun(2)"
+                />
+                <label class="label2">last name</label>
+                <div class="warnnig" id="lastname"></div>
+              </div>
+            </div>
+            <div class="container">
+              <input
+                type="email"
+                class="myinput"
+                name="emailid"
+                id="email"
+                onblur="myfun(3)"
+              />
+              <label class="label3">email ID</label>
+              <div class="warnnig" id="emailid"></div>
+            </div>
+            <div class="container">
+              <input
+                type="text"
+                class="myinput"
+                name=""
+                id="mobile"
+                onblur="myfun(4)"
+              />
+              <label class="label4">mobile number</label>
+              <div class="warnnig" id="mobile number"></div>
+            </div>
+            <div class="container">
+              <div class="pass-con">
+                <input
+                  type="password"
+                  class="myinput"
+                  name=""
+                  id="password"
+                  onblur="myfun(5)"
+                />
+                <label class="label5">password</label>
+                <span class="eye" onclick="showpass()"
+                  ><i id="hide1" class="fa fa-eye"></i
+                  ><i id="hide2" class="fa fa-eye-slash"></i
+                ></span>
+                <div class="warnnig" id="pass"></div>
+              </div>
+            </div>
+
+            <select name="jobrole" id="jobrole" onblur="myfun()" required>
+              <option value="job">Job role</option>
+              <option value="data scientist career path">
+                data scientist career path
+              </option>
+              <option value="mern stack developer career">
+                mern stack developer career
+              </option>
+            </select>
+            <div class="warnnig" id="job"></div>
+            <input type="submit" value="sign up" class="submit" />
+            <!-- text area -->
+            <div class="para1">
+              Already have an account?<span class="signin"
+                ><a href="#">Sign In</a></span
+              >
+            </div>
+            <div class="para2">
+              By signing up, I agree to the edWisor’s Privacy Policy and Terms
+              of Service.
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- form end -->
+    <!-- javascript start -->
+    <script type="text/javascript">
+      var first, last, email, mobile, pass, job;
+
+      const showpass = () => {
+        console.log("add");
+        var a = document.getElementById("password");
+        var b = document.getElementById("hide1");
+        var c = document.getElementById("hide2");
+        if (a.type === "password") {
+          a.type = "text";
+          b.style.display = "block";
+          console.log("add");
+          c.style.display = "none";
+        } else {
+          a.type = "password";
+          console.log("else");
+          b.style.display = "none";
+          c.style.display = "block";
+        }
+      };
+      const mytransform = (inputId, labelClassName) => {
+        var value = document.getElementById(inputId).value;
+        console.log("function1");
+        if (value == "") {
+          document.getElementsByClassName(labelClassName)[0].style.transform =
+            "translateY(-130%)";
+        }
+      };
+
+      const myfun = (indexno) => {
+        first = document.getElementById("first").value;
+        last = document.getElementById("last").value;
+        email = document.getElementById("email").value;
+        mobile = document.getElementById("mobile").value;
+        pass = document.getElementById("password").value;
+        job = document.getElementById("jobrole").value;
+        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        console.log("sub", { first });
+
+        if (first == "") {
+          console.log("if");
+          document.getElementById("firstname").innerHTML =
+            "*please enter your name";
+          document.getElementsByClassName("label1")[0].style.transform = "none";
+          return false;
+        }
+        if (first.length > 0) {
+          console.log("hii");
+          document.getElementsByClassName("label1")[0].style.transform =
+            "translateY(-130%)";
+        }
+        if (!isNaN(first)) {
+          document.getElementById("firstname").innerHTML =
+            "*only characters are allowed.";
+          return false;
+        }
+
+        if (first.length < 3 || first.length > 40) {
+          // console.log({ first, length: first.length });
+          document.getElementById("firstname").innerHTML =
+            "*firstname must have atleast 3 character.";
+          return false;
+        }
+        document.getElementById("firstname").innerHTML = "";
+        if (indexno == 1) {
+          return;
+        }
+
+        // <!-- first validation end -->
+        if (last == "") {
+          console.log("last");
+          document.getElementById("lastname").innerHTML =
+            "*please enter your last name";
+          document.getElementsByClassName("label2")[0].style.transform = "none";
+          return false;
+        }
+        if (last.length > 0) {
+          console.log("print");
+          document.getElementsByClassName("label2")[0].style.transform =
+            "translateY(-130%)";
+        }
+        if (last.length < 3 || last.length > 40) {
+          document.getElementById("lastname").innerHTML =
+            "*lastname must have atleast 3 character.";
+          return false;
+        }
+        if (!isNaN(last)) {
+          document.getElementById("lastname").innerHTML =
+            "*only characters are allowed.";
+          return false;
+        }
+        document.getElementById("lastname").innerHTML = "";
+        if (indexno == 2) {
+          return;
+        }
+        // <!-- last validation end -->
+        if (email == "") {
+          document.getElementById("emailid").innerHTML =
+            "*please enter your emailid";
+          document.getElementsByClassName("label3")[0].style.transform = "none";
+          return false;
+        }
+        if (email.length > 0) {
+          console.log("print");
+          document.getElementsByClassName("label3")[0].style.transform =
+            "translateY(-130%)";
+        }
+
+        if (email.indexOf("@") < 1) {
+          document.getElementById("emailid").innerHTML =
+            "@ position is invalid";
+          return false;
+        }
+        if (
+          email.charAt(email.length - 4) != "." &&
+          email.charAt(email.length - 3) != "."
+        ) {
+          console.log("email");
+          document.getElementById("emailid").innerHTML =
+            "'.' is in invalid position";
+          return false;
+        }
+        console.log("empty");
+        document.getElementById("emailid").innerHTML = "";
+        if (indexno == 3) {
+          return;
+        }
+        // <!-- email validation end -->
+        if (mobile == "") {
+          document.getElementById("mobile number").innerHTML =
+            "*please enter your phone number";
+          document.getElementsByClassName("label4")[0].style.transform = "none";
+          return false;
+        }
+        if (mobile.length > 0) {
+          console.log("print");
+          document.getElementsByClassName("label4")[0].style.transform =
+            "translateY(-130%)";
+        }
+        if (isNaN(mobile)) {
+          console.log("mobile");
+          document.getElementById("mobile number").innerHTML =
+            "*only numbers are allowed";
+          return false;
+        }
+        if (mobile.length < 10 || mobile.length > 10) {
+          document.getElementById("mobile number").innerHTML =
+            "*mobile no must have 10 digits";
+          return false;
+        }
+        document.getElementById("mobile number").innerHTML = "";
+        if (indexno == 4) {
+          return;
+        }
+        // <!-- mobile validation end -->
+
+        if (pass == "") {
+          document.getElementById("pass").innerHTML =
+            "*please enter your passward";
+          document.getElementsByClassName("label5")[0].style.transform = "none";
+          return false;
+        }
+        if (pass.length > 0) {
+          console.log("print");
+          document.getElementsByClassName("label5")[0].style.transform =
+            "translateY(-130%)";
+        }
+        if (pass != regularExpression) {
+          document.getElementById("pass").innerHTML =
+            "*password must have atleast 6 character,one special character,1 digit.";
+          console.log("regularExpression");
+          return false;
+        }
+        document.getElementById("pass").innerHTML = "";
+        if (indexno == 5) {
+          return;
+        }
+
+        // <!-- pass validation end -->
+        if (job == "") {
+          document.getElementById("job").innerHTML =
+            "*please select your jobrole";
+        }
+      };
+    </script>
+  </body>
+</html>
