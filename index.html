@@ -160,14 +160,12 @@
         console.log("sub", { first });
 
         if (first == "") {
-          console.log("if");
           document.getElementById("firstname").innerHTML =
             "*please enter your name";
           document.getElementsByClassName("label1")[0].style.transform = "none";
           return false;
         }
         if (first.length > 0) {
-          console.log("hii");
           document.getElementsByClassName("label1")[0].style.transform =
             "translateY(-130%)";
         }
@@ -189,7 +187,6 @@
 
         // <!-- first validation end -->
         if (last == "") {
-        {
           document.getElementsByClassName("label2")[0].style.transform = "none";
           return false;
         }
