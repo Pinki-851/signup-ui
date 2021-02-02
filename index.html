@@ -44,6 +44,7 @@
                   name="latname"
                   id="last"
                   onblur="myfun(2)"
+                  onclick="mytransform('last','label2')"
                 />
                 <label class="label2">last name</label>
                 <div class="warnnig" id="lastname"></div>
@@ -56,6 +57,7 @@
                 name="emailid"
                 id="email"
                 onblur="myfun(3)"
+                onclick="mytransform('email','label3')"
               />
               <label class="label3">email ID</label>
               <div class="warnnig" id="emailid"></div>
@@ -67,6 +69,7 @@
                 name=""
                 id="mobile"
                 onblur="myfun(4)"
+                onclick="mytransform('mobile','label4')"
               />
               <label class="label4">mobile number</label>
               <div class="warnnig" id="mobile number"></div>
@@ -79,6 +82,7 @@
                   name=""
                   id="password"
                   onblur="myfun(5)"
+                  onclick="mytransform('password','label5')"
                 />
                 <label class="label5">password</label>
                 <span class="eye" onclick="showpass()"
@@ -174,7 +178,6 @@
         }
 
         if (first.length < 3 || first.length > 40) {
-          // console.log({ first, length: first.length });
           document.getElementById("firstname").innerHTML =
             "*firstname must have atleast 3 character.";
           return false;
@@ -186,28 +189,25 @@
 
         // <!-- first validation end -->
         if (last == "") {
-          console.log("last");
-          document.getElementById("lastname").innerHTML =
-            "*please enter your last name";
+        {
           document.getElementsByClassName("label2")[0].style.transform = "none";
           return false;
         }
         if (last.length > 0) {
-          console.log("print");
           document.getElementsByClassName("label2")[0].style.transform =
             "translateY(-130%)";
         }
-        if (last.length < 3 || last.length > 40) {
-          document.getElementById("lastname").innerHTML =
-            "*lastname must have atleast 3 character.";
-          return false;
-        }
-        if (!isNaN(last)) {
-          document.getElementById("lastname").innerHTML =
-            "*only characters are allowed.";
-          return false;
-        }
-        document.getElementById("lastname").innerHTML = "";
+        // if (last.length < 3 || last.length > 40) {
+        //   document.getElementById("lastname").innerHTML =
+        //     "*lastname must have atleast 3 character.";
+        //   return false;
+        // }
+        // if (!isNaN(last)) {
+        //   document.getElementById("lastname").innerHTML =
+        //     "*only characters are allowed.";
+        //   return false;
+        // }
+        // document.getElementById("lastname").innerHTML = "";
         if (indexno == 2) {
           return;
         }
@@ -219,7 +219,6 @@
           return false;
         }
         if (email.length > 0) {
-          console.log("print");
           document.getElementsByClassName("label3")[0].style.transform =
             "translateY(-130%)";
         }
@@ -233,12 +232,10 @@
           email.charAt(email.length - 4) != "." &&
           email.charAt(email.length - 3) != "."
         ) {
-          console.log("email");
           document.getElementById("emailid").innerHTML =
             "'.' is in invalid position";
           return false;
         }
-        console.log("empty");
         document.getElementById("emailid").innerHTML = "";
         if (indexno == 3) {
           return;
@@ -251,12 +248,10 @@
           return false;
         }
         if (mobile.length > 0) {
-          console.log("print");
           document.getElementsByClassName("label4")[0].style.transform =
             "translateY(-130%)";
         }
         if (isNaN(mobile)) {
-          console.log("mobile");
           document.getElementById("mobile number").innerHTML =
             "*only numbers are allowed";
           return false;
@@ -279,14 +274,12 @@
           return false;
         }
         if (pass.length > 0) {
-          console.log("print");
           document.getElementsByClassName("label5")[0].style.transform =
             "translateY(-130%)";
         }
         if (pass != regularExpression) {
           document.getElementById("pass").innerHTML =
             "*password must have atleast 6 character,one special character,1 digit.";
-          console.log("regularExpression");
           return false;
         }
         document.getElementById("pass").innerHTML = "";
