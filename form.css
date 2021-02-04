@@ -83,10 +83,9 @@ h2 {
   font-family: "Nunito Sans", sans-serif;
 }
 .warnnig {
-  white-space: nowrap;
   font-size: 11px;
   color: #ce032a;
-  width: 100%;
+  width: 90%;
   height: 20px;
   padding: 2px;
   font-weight: bold;

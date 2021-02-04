@@ -102,7 +102,7 @@
                 mern stack developer career
               </option>
             </select>
-            <div class="warnnig" id="job"></div>
+            <div class="warnnig" id="pass"></div>
             <input type="submit" value="sign up" class="submit" />
             <!-- text area -->
             <div class="para1">
@@ -122,7 +122,6 @@
     <!-- javascript start -->
     <script type="text/javascript">
       var first, last, email, mobile, pass, job;
-
       const showpass = () => {
         console.log("add");
         var a = document.getElementById("password");
@@ -156,12 +155,10 @@
         mobile = document.getElementById("mobile").value;
         pass = document.getElementById("password").value;
         job = document.getElementById("jobrole").value;
-        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-        console.log("sub", { first });
+        var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}$)/;
 
         if (first == "") {
-          document.getElementById("firstname").innerHTML =
-            "*please enter your name";
+          document.getElementById("firstname").innerHTML = "*enter your name";
           document.getElementsByClassName("label1")[0].style.transform = "none";
           return false;
         }
@@ -170,14 +167,12 @@
             "translateY(-130%)";
         }
         if (!isNaN(first)) {
-          document.getElementById("firstname").innerHTML =
-            "*only characters are allowed.";
+          document.getElementById("firstname").innerHTML = "*only characters ";
           return false;
         }
 
         if (first.length < 3 || first.length > 40) {
-          document.getElementById("firstname").innerHTML =
-            "*firstname must have atleast 3 character.";
+          document.getElementById("firstname").innerHTML = "*must have 3 char.";
           return false;
         }
         document.getElementById("firstname").innerHTML = "";
@@ -186,6 +181,7 @@
         }
 
         // <!-- first validation end -->
+        console.log({ last });
         if (last == "") {
           document.getElementsByClassName("label2")[0].style.transform = "none";
           return false;
@@ -204,7 +200,7 @@
         //     "*only characters are allowed.";
         //   return false;
         // }
-        // document.getElementById("lastname").innerHTML = "";
+        //  document.getElementById("lastname").innerHTML = "";
         if (indexno == 2) {
           return;
         }
@@ -274,21 +270,21 @@
           document.getElementsByClassName("label5")[0].style.transform =
             "translateY(-130%)";
         }
-        if (pass != regularExpression) {
+        if (regularExpression.test(pass)) {
+          console.log({ regularExpression });
+          document.getElementById("pass").innerHTML = "";
+          // console.log({ pass });
+        } else {
           document.getElementById("pass").innerHTML =
-            "*password must have atleast 6 character,one special character,1 digit.";
+            "*password must have atleast 8 char,1 specialchar,1 digit,1 uppercase,1 lowercase.";
+          // console.log({ pass });
           return false;
         }
-        document.getElementById("pass").innerHTML = "";
         if (indexno == 5) {
           return;
         }
 
         // <!-- pass validation end -->
-        if (job == "") {
-          document.getElementById("job").innerHTML =
-            "*please select your jobrole";
-        }
       };
     </script>
   </body>
