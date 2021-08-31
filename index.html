@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>signUp form</title>
     <link rel="stylesheet" href="form.css" />
     <link
       rel="stylesheet"
@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <!-- form start -->
     <section>
@@ -107,12 +108,8 @@
             <!-- text area -->
             <div class="para1">
               Already have an account?<span class="signin"
-                ><a href="#">Sign In</a></span
+                ><a href="signIn.html">Sign In</a></span
               >
-            </div>
-            <div class="para2">
-              By signing up, I agree to the edWisor’s Privacy Policy and Terms
-              of Service.
             </div>
           </div>
         </div>
@@ -155,7 +152,8 @@
         mobile = document.getElementById("mobile").value;
         pass = document.getElementById("password").value;
         job = document.getElementById("jobrole").value;
-        var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}$)/;
+        var regularExpression =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}$)/;
 
         if (first == "") {
           document.getElementById("firstname").innerHTML = "*enter your name";

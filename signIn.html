@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signIn form</title>
+    <link rel="stylesheet" href="form.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="signin_container">
+      <form onsubmit="return myfun()">
+        <div class="singin_center_div">
+          <h2>sign in</h2>
+
+          <div class="container">
+            <input
+              type="email"
+              class="myinput"
+              name="emailid"
+              id="email"
+              onblur="myfun(1)"
+              onclick="mytransform('email','label1')"
+            />
+            <label class="label1">email ID</label>
+            <div class="warnnig" id="emailid"></div>
+          </div>
+          <div class="container">
+            <div class="pass-con">
+              <input
+                type="password"
+                class="myinput"
+                name=""
+                id="password"
+                onblur="myfun(2)"
+                onclick="mytransform('password','label2')"
+              />
+              <label class="label2">password</label>
+              <span class="eye" onclick="showpass()"
+                ><i id="hide1" class="fa fa-eye"></i
+                ><i id="hide2" class="fa fa-eye-slash"></i
+              ></span>
+              <div class="warnnig" id="pass"></div>
+            </div>
+          </div>
+          <input type="submit" value="sign in" class="submit" />
+        </div>
+      </form>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const showpass = () => {
+      console.log("add");
+      var a = document.getElementById("password");
+      var b = document.getElementById("hide1");
+      var c = document.getElementById("hide2");
+      if (a.type === "password") {
+        a.type = "text";
+        b.style.display = "block";
+        // console.log("add");
+        c.style.display = "none";
+      } else {
+        a.type = "password";
+        // console.log("else");
+        b.style.display = "none";
+        c.style.display = "block";
+      }
+    };
+    const mytransform = (inputId, labelClassName) => {
+      var value = document.getElementById(inputId).value;
+      console.log("function1");
+      if (value == "") {
+        document.getElementsByClassName(labelClassName)[0].style.transform =
+          "translateY(-130%)";
+      }
+    };
+    const myfun = (indexno) => {
+      var email = document.getElementById("email").value;
+      var pass = document.getElementById("password").value;
+      var regularExpression =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}$)/;
+
+      if (email == "") {
+        document.getElementById("emailid").innerHTML =
+          "*please enter your emailid";
+        document.getElementsByClassName("label3")[0].style.transform = "none";
+        return false;
+      }
+      if (email.length > 0) {
+        document.getElementsByClassName("label3")[0].style.transform =
+          "translateY(-130%)";
+      }
+
+      if (email.indexOf("@") < 1) {
+        document.getElementById("emailid").innerHTML = "@ position is invalid";
+        return false;
+      }
+      if (
+        email.charAt(email.length - 4) != "." &&
+        email.charAt(email.length - 3) != "."
+      ) {
+        document.getElementById("emailid").innerHTML =
+          "'.' is in invalid position";
+        return false;
+      }
+      document.getElementById("emailid").innerHTML = "";
+      if (indexno == 1) {
+        return;
+      }
+      if (pass == "") {
+        document.getElementById("pass").innerHTML =
+          "*please enter your passward";
+        document.getElementsByClassName("label5")[0].style.transform = "none";
+        return false;
+      }
+      if (pass.length > 0) {
+        document.getElementsByClassName("label5")[0].style.transform =
+          "translateY(-130%)";
+      }
+      if (regularExpression.test(pass)) {
+        // console.log({ regularExpression });
+        document.getElementById("pass").innerHTML = "";
+        // console.log({ pass });
+      } else {
+        document.getElementById("pass").innerHTML =
+          "*password must have atleast 8 char,1 specialchar,1 digit,1 uppercase,1 lowercase.";
+        // console.log({ pass });
+        return false;
+      }
+      if (indexno == 2) {
+        return;
+      }
+    };
+  </script>
+</html>
