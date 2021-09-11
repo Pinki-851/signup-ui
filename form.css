@@ -168,11 +168,11 @@ input:focus-within + label {
   transform-origin: 50% 50%;
   transform: translateY(-130%);
 }
-@media screen and (min-width:992px) {
-    .centerdiv {
-      width: 100%;
+@media screen and (min-width: 992px) {
+  .centerdiv {
+    width: 100%;
     padding-left: 80px;
-}
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -182,15 +182,17 @@ input:focus-within + label {
   }
   .centerdiv {
     padding-left: 50px;
+  }
 }
-}
-@media screen and (max-width:480px) {
-   .eye {
+@media screen and (max-width: 480px) {
+  .eye {
     top: 4.5vh;
     right: 15vw;
   }
+  .form_containor {
+    margin: 0;
+  }
   .centerdiv {
     padding-left: 20px;
+  }
 }
-}
-
