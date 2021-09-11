@@ -192,4 +192,7 @@ input:focus-within + label {
   .form_containor {
     margin: 0;
   }
+  .centerdiv {
+    padding-left: 0px;
+  }
 }
