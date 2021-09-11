@@ -93,11 +93,11 @@
       if (email == "") {
         document.getElementById("emailid").innerHTML =
           "*please enter your emailid";
-        document.getElementsByClassName("label3")[0].style.transform = "none";
+        document.getElementsByClassName("label1")[0].style.transform = "none";
         return false;
       }
       if (email.length > 0) {
-        document.getElementsByClassName("label3")[0].style.transform =
+        document.getElementsByClassName("label1")[0].style.transform =
           "translateY(-130%)";
       }
 
@@ -120,11 +120,11 @@
       if (pass == "") {
         document.getElementById("pass").innerHTML =
           "*please enter your passward";
-        document.getElementsByClassName("label5")[0].style.transform = "none";
+        document.getElementsByClassName("label2")[0].style.transform = "none";
         return false;
       }
       if (pass.length > 0) {
-        document.getElementsByClassName("label5")[0].style.transform =
+        document.getElementsByClassName("label2")[0].style.transform =
           "translateY(-130%)";
       }
       if (regularExpression.test(pass)) {
@@ -140,6 +140,8 @@
       if (indexno == 2) {
         return;
       }
+              alert("you are successfully sign in.This is just a page")
+
     };
   </script>
 </html>

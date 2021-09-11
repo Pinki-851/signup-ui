@@ -6,6 +6,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 section {
   width: 100%;
@@ -167,9 +168,29 @@ input:focus-within + label {
   transform-origin: 50% 50%;
   transform: translateY(-130%);
 }
+@media screen and (min-width:992px) {
+    .centerdiv {
+      width: 100%;
+    padding-left: 80px;
+}
+}
+
 @media screen and (max-width: 768px) {
   .eye {
     top: 4.5vh;
     right: 11vw;
   }
+  .centerdiv {
+    padding-left: 50px;
 }
+}
+@media screen and (max-width:480px) {
+   .eye {
+    top: 4.5vh;
+    right: 15vw;
+  }
+  .centerdiv {
+    padding-left: 20px;
+}
+}
+
